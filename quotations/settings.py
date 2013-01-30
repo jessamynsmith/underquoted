@@ -121,7 +121,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'south',
     'tastypie',
-    'quotations.apps.quotes',
+    'quotations.apps.quotations',
 )
 
 # A sample logging configuration. The only tangible logging
