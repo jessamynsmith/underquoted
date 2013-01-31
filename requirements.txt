@@ -1,5 +1,6 @@
 Django==1.4.3
 South==0.7.6
+dj-database-url==0.2.1
 django-tastypie==0.9.11
 gunicorn==0.17.2
 mimeparse==0.1.3
