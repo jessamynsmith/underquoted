@@ -14,3 +14,9 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
+
+MEDIA_ROOT = ''
+MEDIA_URL = ''
+
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
