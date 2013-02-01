@@ -4,7 +4,7 @@ from django.db import models
 
 class Author(models.Model):
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     date_of_birth = models.DateField()
     date_of_death = models.DateField(null=True, blank=True)
 
@@ -22,7 +22,7 @@ class Author(models.Model):
 class Quotation(models.Model):
 
     author = models.ForeignKey(Author, related_name='quotations')
-    text = models.CharField(max_length=500)
+    text = models.CharField(max_length=500, unique=True)
 
     def __unicode__(self):
         return "%s ~ %s" % (self.text, self.author.name)
