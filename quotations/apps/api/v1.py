@@ -17,6 +17,9 @@ class AuthorResource(ModelResource):
     class Meta(BaseMeta):
         queryset = quotations_models.Author.objects.all()
         resource_name = 'authors'
+        filtering = {
+            'name': ['exact', 'contains']
+        }
 
 
 class QuotationResource(ModelResource):
