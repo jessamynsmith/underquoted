@@ -36,6 +36,8 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
+APP_PATH = os.path.realpath(os.path.dirname(__file__))
+
 DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
 DEFAULT_S3_PATH = 'media'
 STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
@@ -108,6 +110,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    APP_PATH + '/templates/',
 )
 
 INSTALLED_APPS = (

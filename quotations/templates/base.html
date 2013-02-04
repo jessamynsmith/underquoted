@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base.css" type="text/css" media="screen" />
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+<h1>The Underquoted</h1>
+<p class="small">Quoting the underquoted members of society</p>
+
+{% block content %}{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+</body>
+</html>
