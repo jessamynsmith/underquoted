@@ -32,3 +32,9 @@ class QuotationResource(ModelResource):
             'text': ['contains'],
             'author': ALL_WITH_RELATIONS
         }
+
+    def get_object_list(self, request):
+        object_list = super(QuotationResource, self).get_object_list(request)
+        if request.GET.get('random', False):
+            object_list = object_list.order_by('?')
+        return object_list
