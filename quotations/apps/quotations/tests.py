@@ -1,9 +1,10 @@
 from datetime import date
-from django.test import TestCase
+from django.utils import unittest
+
 from quotations.apps.quotations import models as quotation_models
 
 
-class QuotationsBaseTest(TestCase):
+class QuotationsBaseTest(unittest.TestCase):
 
     def setUp(self):
         super(QuotationsBaseTest, self).setUp()
@@ -28,4 +29,4 @@ class QuotationTest(QuotationsBaseTest):
         """
         Tests that quotation is properly represented in unicode.
         """
-        self.assertEqual(u'Pithy quotation. ~ Jane', '%s' % self.quotation)
+        self.assertEqual(u'Pithy quotation. - Jane', '%s' % self.quotation)

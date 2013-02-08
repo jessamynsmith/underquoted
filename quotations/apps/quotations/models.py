@@ -25,7 +25,7 @@ class Quotation(models.Model):
     text = models.CharField(max_length=500, unique=True)
 
     def __unicode__(self):
-        return "%s ~ %s" % (self.text, self.author.name)
+        return "%s - %s" % (self.text, self.author.name)
 
     def get_absolute_url(self):
         return reverse('quotation_detail', args=[self.pk])

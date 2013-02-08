@@ -2,7 +2,7 @@
 import os
 
 ADMINS = (
-    (os.environ['ADMIN_NAME'], os.environ['ADMIN_EMAIL']),
+    (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL')),
 )
 
 MANAGERS = ADMINS
@@ -42,9 +42,9 @@ DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
 DEFAULT_S3_PATH = 'media'
 STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
 STATIC_S3_PATH = 'static'
-AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.

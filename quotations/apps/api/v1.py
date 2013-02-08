@@ -25,6 +25,10 @@ class AuthorResource(ModelResource):
 class QuotationResource(ModelResource):
     author = fields.ForeignKey(AuthorResource, 'author', full=True)
 
+    def __init__(self, api_name=None):
+        super(QuotationResource, self).__init__(api_name)
+        self.custom_filters = {}
+
     class Meta(BaseMeta):
         queryset = quotations_models.Quotation.objects.all()
         resource_name = 'quotations'
@@ -32,6 +36,26 @@ class QuotationResource(ModelResource):
             'text': ['icontains'],
             'author': ALL_WITH_RELATIONS
         }
+
+    def build_filters(self, filters=None):
+        if filters:
+            text_icontains = filters.getlist(u'text__icontains', [])
+            if len(text_icontains) > 0:
+                self.custom_filters['text__icontains'] = []
+                for filter in text_icontains:
+                    self.custom_filters['text__icontains'].append(filter)
+        return super(QuotationResource, self).build_filters(filters)
+
+    def apply_filters(self, request, applicable_filters):
+        filtered = super(QuotationResource, self).apply_filters(
+            request, applicable_filters)
+
+        # Do AND filtering on all text__icontains query parameters
+        if self.custom_filters.get('text__icontains'):
+            for value in self.custom_filters.get('text__icontains'):
+                filtered = filtered.filter(text__icontains=value)
+
+        return filtered
 
     def get_object_list(self, request):
         object_list = super(QuotationResource, self).get_object_list(request)
