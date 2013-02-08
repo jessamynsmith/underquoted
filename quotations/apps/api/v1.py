@@ -18,7 +18,7 @@ class AuthorResource(ModelResource):
         queryset = quotations_models.Author.objects.all()
         resource_name = 'authors'
         filtering = {
-            'name': ['exact', 'contains']
+            'name': ['exact', 'icontains']
         }
 
 
@@ -29,7 +29,7 @@ class QuotationResource(ModelResource):
         queryset = quotations_models.Quotation.objects.all()
         resource_name = 'quotations'
         filtering = {
-            'text': ['contains'],
+            'text': ['icontains'],
             'author': ALL_WITH_RELATIONS
         }
 
