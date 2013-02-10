@@ -1,13 +1,26 @@
-from django.http import QueryDict
-from django.utils import unittest
+from django.http import HttpRequest, QueryDict
+from django import test
 
 from quotations.apps.api.v1 import QuotationResource
+from quotations.apps.quotations import models as quotation_models
 
 
-class QuotationResourceTestCase(unittest.TestCase):
+def _create_author(name):
+    author = quotation_models.Author(name=name, date_of_birth='1920-02-01')
+    author.save()
+    return author
+
+
+def _create_quotation(author, text):
+    quotation = quotation_models.Quotation(author=author, text=text)
+    quotation.save()
+    return quotation
+
+
+class QuotationResourceBuildFiltersTestCase(test.TestCase):
 
     def setUp(self):
-        super(QuotationResourceTestCase, self).setUp()
+        super(QuotationResourceBuildFiltersTestCase, self).setUp()
         self.resource = QuotationResource()
 
     def test_build_filters_no_filters(self):
@@ -37,3 +50,48 @@ class QuotationResourceTestCase(unittest.TestCase):
 
         self.assertEqual({'text__icontains': [u'help', u'me']},
                          self.resource.custom_filters)
+
+
+class QuotationResourceApplyFiltersTestCase(test.TestCase):
+
+    def setUp(self):
+        super(QuotationResourceApplyFiltersTestCase, self).setUp()
+        self.resource = QuotationResource()
+        self.request = HttpRequest()
+        self.author1 = _create_author('Janet Livingston')
+        self.author2 = _create_author('Marie Renault')
+        self.quotation1 = _create_quotation(self.author1, "2b or not 2b")
+        self.quotation2 = _create_quotation(self.author1, "All for one")
+        self.quotation3 = _create_quotation(self.author2, "Not I, one said")
+
+    def test_apply_filters_no_filters(self):
+        """
+        Tests that custom filters are not applied if not specified
+        """
+        filtered = self.resource.apply_filters(self.request, {})
+
+        self.assertEqual(3, len(filtered))
+
+    def test_apply_filters_single_filter(self):
+        """
+        Tests that a single custom filter is applied correctly
+        """
+        self.resource.custom_filters = {'text__icontains': [u'not']}
+
+        filtered = self.resource.apply_filters(self.request, {})
+        filtered.order_by('text')
+
+        self.assertEqual(2, len(filtered))
+        self.assertEqual(u'2b or not 2b', filtered[0].text)
+        self.assertEqual(u'Not I, one said', filtered[1].text)
+
+    def test_apply_filters_multiple_filters(self):
+        """
+        Tests that multiple custom filters are applied correctly
+        """
+        self.resource.custom_filters = {'text__icontains': [u'not', u'one']}
+
+        filtered = self.resource.apply_filters(self.request, {})
+
+        self.assertEqual(1, len(filtered))
+        self.assertEqual(u'Not I, one said', filtered[0].text)
