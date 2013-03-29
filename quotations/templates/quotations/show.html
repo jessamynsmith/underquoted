@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+	{% for quotation in quotations %}
+        <p>{{ quotation.text }}</p>
+        <p class="author">{{ quotation.author.name }}</p>
+        <br>
+	{% endfor %}
+{% endblock %}

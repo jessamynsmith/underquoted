@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
+{% with "The Underquoted" as title %}
+
 <head>
     {% load staticfiles %}
     <link rel="stylesheet" href="{{ STATIC_URL }}base.css" type="text/css" media="screen" />
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{{ title }}</title>
 </head>
 <body>
 
-<h1>The Underquoted</h1>
+<h1>{{ title }}</h1>
 <p class="small">Quoting the underquoted members of society</p>
 
 {% block content %}{% endblock %}
@@ -17,4 +20,7 @@
 {% endblock %}
 
 </body>
+
+{% endwith %}
+
 </html>

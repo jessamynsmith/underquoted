@@ -16,7 +16,7 @@ class Author(models.Model):
                                death_year)
 
     def get_absolute_url(self):
-        return reverse('author_detail', args=[self.pk])
+        return reverse('show_author', args=[self.pk])
 
 
 class Quotation(models.Model):
@@ -28,4 +28,4 @@ class Quotation(models.Model):
         return "%s - %s" % (self.text, self.author.name)
 
     def get_absolute_url(self):
-        return reverse('quotation_detail', args=[self.pk])
+        return reverse('show_quotation', args=[self.pk])

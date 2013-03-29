@@ -1,13 +1,18 @@
-from django.http import QueryDict
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
-from quotations.apps.api.v1 import QuotationResource
+
+from quotations.apps.quotations import models as q_models
+from quotations.libs import query_set
 
 
-def random(request):
-    resource = QuotationResource()
-    request.GET = QueryDict(u'limit=1&random=True')
-    quotations = resource.get_object_list(request)
-    return render_to_response('quotations/random.html',
-                              {'quotation': quotations[0]},
-                              context_instance = RequestContext(request))
+def redirect_to_random(request):
+    quotations = query_set.get_random(q_models.Quotation.objects.all())
+    return redirect(quotations[0])
+
+
+def show_quotation(request, pk):
+    quotations = q_models.Quotation.objects.filter(pk=pk)
+
+    return render_to_response('quotations/show.html',
+                              {'quotations': quotations},
+                              context_instance=RequestContext(request))
