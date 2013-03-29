@@ -2,9 +2,10 @@
 
 {% block content %}
 	<form action="{% url list_quotations %}">
-	    <a class="random" href="{% url redirect_to_random %}"><input class="button" value="Random"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
+	    <a class="random" href="{% url redirect_to_random %}"><input class="button" value="Random"/></a>
 		<input id="search" name="search" type="text" value="{{ search_text }}"/>
 		<input class="button" type="submit" value="Search"/>
+
 	</form>
 	<br/>
 

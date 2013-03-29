@@ -27,8 +27,38 @@ a.header {
     cursor: default;
 }
 
-.header form {
-    float: right;
+@media all and (max-width: 320px) {
+    #search {
+        width: 189px;
+    }
+}
+
+@media all and (min-width: 321px) and (max-width: 400px) {
+    #search {
+        width: 210px;
+    }
+}
+
+@media all and (max-width: 400px) {
+    form a {
+        display: block;
+        width: 75px;
+        margin-bottom: 7px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    body {
+        margin: 10px;
+    }
+}
+
+@media all and (min-width: 401px) {
+    form a {
+        margin-right: 25px;
+    }
+    body {
+        margin: 30px;
+    }
 }
 
 .title {
