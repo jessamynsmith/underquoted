@@ -14,7 +14,7 @@ def redirect_to_random(request):
 
 
 def list_quotations(request):
-    search_text = request.GET.get('search', '').strip()
+    search_text = request.GET.get('search_text', '').strip()
     quotations = q_models.Quotation.objects.all()
     if search_text:
         quotations = quotations.filter(
@@ -25,10 +25,13 @@ def list_quotations(request):
     paginator = Paginator(quotations, settings.MAX_PER_PAGE)
 
     page = request.GET.get('page')
+    print page
     try:
         quotations = paginator.page(page)
+        print quotations
     except PageNotAnInteger:
         # If page is not an integer, deliver first page.
+        print "except"
         quotations = paginator.page(1)
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.

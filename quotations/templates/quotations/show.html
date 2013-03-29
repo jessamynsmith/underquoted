@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% load quotations_tags %}
 
 {% block content %}
 	<form action="{% url list_quotations %}">
 	    <a class="random" href="{% url redirect_to_random %}"><input class="button" value="Random"/></a>
-		<input id="search" name="search" type="text" value="{{ search_text }}"/>
+		<input id="search_text" name="search_text" type="text" value="{{ search_text }}"/>
 		<input class="button" type="submit" value="Search"/>
 
 	</form>
@@ -22,17 +23,21 @@
 	{% if pages|length > 1 %}
         <div class="pagination">
             <span>
-                <a class="button" href="?page={{ quotations.previous_page_number }}">prev</a>
+                {% if quotations.has_previous %}
+                    <a class="button" href="?{% query_string search_text=search_text page=quotations.previous_page_number %}">prev</a>
+	            {% endif %}
                 &nbsp;
                 {% for page_number in pages %}
                     {% if page_number == quotations.number %}
                         {{ page_number }}
                     {% else %}
-                        <a href="?page={{ page_number }}">{{ page_number }}</a>
+                        <a href="?{% query_string search_text=search_text page=page_number %}">{{ page_number }}</a>
                     {% endif %}
                 {% endfor %}
                 &nbsp;
-                <a class="button" href="?page={{ quotations.next_page_number }}">next</a>
+                {% if quotations.has_next %}
+                <a class="button" href="?{% query_string search_text=search_text page=quotations.next_page_number %}">next</a>
+	            {% endif %}
             </span>
         </div>
 	{% endif %}
