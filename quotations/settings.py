@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'quotations.apps.quotations',
 )
 
-MAX_PER_PAGE = 10
+MAX_PER_PAGE = 5
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

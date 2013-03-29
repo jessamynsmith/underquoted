@@ -5,12 +5,16 @@ body {
     margin: 30px;
 }
 
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
 .header {
     width: 100%;
 }
 
 .button {
-    color: #000000;
     background-color: #FFFFFF;
     border: 1px solid #000000;
     border-radius: 4px;
@@ -20,10 +24,6 @@ body {
     width: 75px;
     padding: 3px;
     cursor: default;
-}
-
-a.button {
-    text-decoration: none;
 }
 
 .header form {

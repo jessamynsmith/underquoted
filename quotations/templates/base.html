@@ -11,10 +11,12 @@
 </head>
 <body>
 
+<a href="{% url redirect_to_random %}">
 <div class="header">
     <span class="title">{{ title }}</span>
     <div class="small">Quoting the underquoted members of society</div>
 </div>
+</a>
 <br/>
 
 {% block content %}{% endblock %}
