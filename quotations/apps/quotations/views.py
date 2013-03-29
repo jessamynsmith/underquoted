@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
@@ -14,18 +15,28 @@ def redirect_to_random(request):
 
 def list_quotations(request):
     search_text = request.GET.get('search', '').strip()
-    print search_text
     quotations = q_models.Quotation.objects.all()
     if search_text:
         quotations = quotations.filter(
             Q(text__icontains=search_text)
             | Q(author__name__icontains=search_text)
         )
-    else:
-        # TODO would be nicer to paginate results
-        quotations = quotations[:settings.MAX_QUOTATIONS]
+
+    paginator = Paginator(quotations, settings.MAX_PER_PAGE)
+
+    page = request.GET.get('page')
+    try:
+        quotations = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        quotations = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        quotations = paginator.page(paginator.num_pages)
+
     return render_to_response('quotations/show.html',
                               {'quotations': quotations,
+                               'pages': [i for i in range(1, paginator.num_pages+1)],
                                'search_text': search_text},
                               context_instance=RequestContext(request))
 
