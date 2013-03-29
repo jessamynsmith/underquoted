@@ -5,13 +5,14 @@ body {
     margin: 30px;
 }
 
-a {
+a.button {
     text-decoration: none;
     color: #000000;
 }
 
-.header {
-    width: 100%;
+a.header {
+    text-decoration: none;
+    color: #000000;
 }
 
 .button {
