@@ -5,8 +5,33 @@ body {
     margin: 30px;
 }
 
-h1 {
-    font-size: 26pt;
+.header {
+    width: 100%;
+}
+
+.button {
+    color: #000000;
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+    width: 75px;
+    padding: 3px;
+    cursor: default;
+}
+
+a.button {
+    text-decoration: none;
+}
+
+.header form {
+    float: right;
+}
+
+.title {
+    font-size: 24pt;
     font-weight: bold;
 }
 
