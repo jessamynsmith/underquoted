@@ -6,27 +6,30 @@
 		<input id="search" name="search" type="text" value="{{ search_text }}"/>
 		<input class="button" type="submit" value="Search"/>
 	</form>
+	<br/>
 
 	{% for quotation in quotations %}
-        <p>{{ quotation.text }}</p>
-        <p class="author">{{ quotation.author.name }}</p>
-        <br>
+        <div>{{ quotation.text }}</div>
+        <div class="author">{{ quotation.author.name }}</div>
+	    <br/>
 	{% endfor %}
 
-    <div class="pagination">
-        <span>
-            <a class="button" href="?page={{ quotations.previous_page_number }}">prev</a>
-	        &nbsp;
-	        {% for page_number in pages %}
-		        {% if page_number == quotations.number %}
-			        {{ page_number }}
-			    {% else %}
-		            <a href="?page={{ page_number }}">{{ page_number }}</a>
-		        {% endif %}
-	        {% endfor %}
-            &nbsp;
-            <a class="button" href="?page={{ quotations.next_page_number }}">next</a>
-        </span>
-    </div>
+	{% if pages|length > 1 %}
+        <div class="pagination">
+            <span>
+                <a class="button" href="?page={{ quotations.previous_page_number }}">prev</a>
+                &nbsp;
+                {% for page_number in pages %}
+                    {% if page_number == quotations.number %}
+                        {{ page_number }}
+                    {% else %}
+                        <a href="?page={{ page_number }}">{{ page_number }}</a>
+                    {% endif %}
+                {% endfor %}
+                &nbsp;
+                <a class="button" href="?page={{ quotations.next_page_number }}">next</a>
+            </span>
+        </div>
+	{% endif %}
 
 {% endblock %}

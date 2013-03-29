@@ -44,5 +44,6 @@ def list_quotations(request):
 def show_quotation(request, pk):
     quotations = q_models.Quotation.objects.filter(pk=pk)
     return render_to_response('quotations/show.html',
-                              {'quotations': quotations},
+                              {'quotations': quotations,
+                               'pages': [1]},
                               context_instance=RequestContext(request))
