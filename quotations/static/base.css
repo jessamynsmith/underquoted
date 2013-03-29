@@ -2,7 +2,7 @@ body {
     background-color: #E6E6FF;
     font-family: sans-serif;
     font-size: 14pt;
-    margin: 30pt;
+    margin: 30px;
 }
 
 a.button {
@@ -17,13 +17,13 @@ a.header {
 
 .button {
     background-color: #FFFFFF;
-    border: 1pt solid #000000;
-    border-radius: 4pt;
+    border: 1px solid #000000;
+    border-radius: 4px;
     font-size: 12pt;
     text-align: center;
     vertical-align: middle;
-    width: 75pt;
-    padding: 3pt;
+    width: 75px;
+    padding: 2px;
     cursor: default;
 }
 
@@ -37,8 +37,8 @@ a.header {
 }
 
 .author {
-    margin-top: 7pt;
-    text-indent: 80pt;
+    margin-top: 7px;
+    text-indent: 80px;
 }
 
 .small {
