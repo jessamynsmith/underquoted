@@ -3,11 +3,9 @@ from tastypie import fields
 from tastypie.resources import ModelResource, ALL_WITH_RELATIONS
 from quotations.apps.quotations import models as quotations_models
 from quotations.libs.auth import MethodAuthentication
-from quotations.libs.serializers import Serializer
 
 
 class BaseMeta(object):
-    serializer = Serializer()
     authentication = MethodAuthentication()
     authorization = DjangoAuthorization()
 
