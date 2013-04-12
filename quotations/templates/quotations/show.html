@@ -2,8 +2,8 @@
 {% load quotations_tags %}
 
 {% block content %}
-	<form action="{% url list_quotations %}">
-	    <a class="random" href="{% url redirect_to_random %}"><input class="button" value="Random"/></a>
+	<form action="{% url 'list_quotations' %}">
+	    <a class="random" href="{% url 'redirect_to_random' %}"><input class="button" value="Random"/></a>
 		<input id="search_text" name="search_text" type="text" value="{{ search_text }}"/>
 		<input class="button" type="submit" value="Search"/>
 
