@@ -22,3 +22,5 @@ MEDIA_URL = ''
 STATIC_ROOT = '/tmp'
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+ALLOWED_HOSTS = ['*']

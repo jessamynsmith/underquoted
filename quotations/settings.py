@@ -84,6 +84,8 @@ STATICFILES_FINDERS = (
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
+ALLOWED_HOSTS = ['underquoted.herokuapp.com']
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd'
 
