@@ -1,6 +1,7 @@
 # Django settings for quotations project.
 import os
 
+DEBUG = os.environ.get('DEBUG', False)
 
 ADMINS = (
     (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL')),
