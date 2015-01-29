@@ -87,7 +87,7 @@ STATICFILES_FINDERS = (
 ALLOWED_HOSTS = ['underquoted.herokuapp.com']
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
