@@ -38,7 +38,8 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-APP_PATH = os.path.realpath(os.path.dirname(__file__))
+APP_PATH = os.path.realpath(os.path.join(os.path.dirname(__file__),
+                                         os.path.pardir))
 
 DEFAULT_FILE_STORAGE = 's3_folder_storage.s3.DefaultStorage'
 DEFAULT_S3_PATH = 'media'
@@ -118,7 +119,7 @@ TEMPLATE_DIRS = (
     APP_PATH + '/templates/',
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -135,7 +136,7 @@ INSTALLED_APPS = (
     'tastypie',
     'quotations.apps.api',
     'quotations.apps.quotations',
-)
+]
 
 MAX_PER_PAGE = 5
 
