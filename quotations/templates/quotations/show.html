@@ -11,8 +11,8 @@
 	<br/>
 
 	{% for quotation in quotations %}
-        <div>{{ quotation.text }}</div>
-        <div class="author">{{ quotation.author.name }}</div>
+        <a class="header" href="{{ quotation.get_absolute_url }}"><div>{{ quotation.text }}</div>
+        <div class="author">{{ quotation.author.name }}</div></a>
 	    <br/>
 	{% endfor %}
 
