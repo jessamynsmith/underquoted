@@ -1,4 +1,4 @@
-from quotations.settings.production import *
+from quotations.settings.common import *
 
 
 SECRET_KEY = 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd'
