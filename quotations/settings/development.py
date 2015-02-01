@@ -38,6 +38,7 @@ DJANGO_ARGS = [
 ]
 
 NOSE_ARGS = [
+    '--exclude=settings',
     '--verbosity=0',
     '--cover-branches',
     '--cover-package=quotations',

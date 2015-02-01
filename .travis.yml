@@ -3,7 +3,11 @@ python:
     - "2.7"
 
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install: "pip install -r requirements/development.txt"
 
 # command to run tests
-script: python manage.py test --settings=quotations.settings.development
+script: python manage.py test --settings=quotations.settings.development --with-coverage && flake8
+
+# coverage!
+after_success:
+    coveralls
