@@ -1,5 +1,5 @@
 from django.template import Library
-from urllib import urlencode
+from urllib.parse import urlencode
 
 
 register = Library()

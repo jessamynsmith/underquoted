@@ -20,30 +20,25 @@ def _create_quotation(author, text):
 class QuotationResourceBuildFiltersTestCase(test.TestCase):
 
     def setUp(self):
-        super(QuotationResourceBuildFiltersTestCase, self).setUp()
         self.resource = QuotationResource()
 
     def test_build_filters_no_filters(self):
-        """
-        Tests that custom filters are built properly when no filters supplied
-        """
         self.resource.build_filters()
 
         self.assertEqual({}, self.resource.custom_filters)
 
+    def test_build_filters_no_filter(self):
+        self.resource.build_filters(QueryDict(u''))
+
+        self.assertEqual({}, self.resource.custom_filters)
+
     def test_build_filters_from_single_filter(self):
-        """
-        Tests that custom filters are built properly from filter supplied
-        """
         self.resource.build_filters(QueryDict(u'text__icontains=help'))
 
         self.assertEqual({'text__icontains': [u'help']},
                          self.resource.custom_filters)
 
     def test_build_filters_from_multiple_filters(self):
-        """
-        Tests that custom filters are built properly from filters supplied
-        """
         query_dict = QueryDict(u'text__icontains=help&text__icontains=me')
 
         self.resource.build_filters(query_dict)
@@ -52,10 +47,9 @@ class QuotationResourceBuildFiltersTestCase(test.TestCase):
                          self.resource.custom_filters)
 
 
-class QuotationResourceApplyFiltersTestCase(test.TestCase):
+class QuotationResourceTestCase(test.TestCase):
 
     def setUp(self):
-        super(QuotationResourceApplyFiltersTestCase, self).setUp()
         self.resource = QuotationResource()
         self.request = HttpRequest()
         self.author1 = _create_author('Janet Livingston')
@@ -65,17 +59,11 @@ class QuotationResourceApplyFiltersTestCase(test.TestCase):
         self.quotation3 = _create_quotation(self.author2, "Not I, one said")
 
     def test_apply_filters_no_filters(self):
-        """
-        Tests that custom filters are not applied if not specified
-        """
         filtered = self.resource.apply_filters(self.request, {})
 
         self.assertEqual(3, len(filtered))
 
     def test_apply_filters_single_filter(self):
-        """
-        Tests that a single custom filter is applied correctly
-        """
         self.resource.custom_filters = {'text__icontains': [u'not']}
 
         filtered = self.resource.apply_filters(self.request, {})
@@ -86,12 +74,24 @@ class QuotationResourceApplyFiltersTestCase(test.TestCase):
         self.assertEqual(u'Not I, one said', filtered[1].text)
 
     def test_apply_filters_multiple_filters(self):
-        """
-        Tests that multiple custom filters are applied correctly
-        """
         self.resource.custom_filters = {'text__icontains': [u'not', u'one']}
 
         filtered = self.resource.apply_filters(self.request, {})
 
         self.assertEqual(1, len(filtered))
         self.assertEqual(u'Not I, one said', filtered[0].text)
+
+    def test_get_object_list_all(self):
+        objects = self.resource.get_object_list(self.request)
+
+        self.assertEqual(3, len(objects))
+        self.assertEqual(self.quotation1, objects[0])
+        self.assertEqual(self.quotation2, objects[1])
+        self.assertEqual(self.quotation3, objects[2])
+
+    def test_get_object_list_random(self):
+        self.request.GET = QueryDict(u'random=1')
+
+        objects = self.resource.get_object_list(self.request)
+
+        self.assertEqual(3, len(objects))

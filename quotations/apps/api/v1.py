@@ -40,8 +40,8 @@ class QuotationResource(ModelResource):
             text_icontains = filters.getlist(u'text__icontains', [])
             if len(text_icontains) > 0:
                 self.custom_filters['text__icontains'] = []
-                for filter in text_icontains:
-                    self.custom_filters['text__icontains'].append(filter)
+                for value in text_icontains:
+                    self.custom_filters['text__icontains'].append(value)
         return super(QuotationResource, self).build_filters(filters)
 
     def apply_filters(self, request, applicable_filters):
