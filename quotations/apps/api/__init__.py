@@ -1,1 +1,1 @@
-import quotations.apps.api.signals
+import quotations.apps.api.signals  # NOQA

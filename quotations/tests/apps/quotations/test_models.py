@@ -28,7 +28,6 @@ class QuotationTest(test.TestCase):
         self.quotation = quotation_models.Quotation(author=self.author, text='hello')
         self.quotation.save()
 
-
     def test_str(self):
         self.assertEqual(u'hello - Emily', '%s' % self.quotation)
 
