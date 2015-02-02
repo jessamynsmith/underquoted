@@ -17,7 +17,7 @@ def _create_quotation(author, text):
     return quotation
 
 
-class QuotationResourceBuildFiltersTestCase(test.TestCase):
+class QuotationResourceBuildFiltersTest(test.TestCase):
 
     def setUp(self):
         self.resource = QuotationResource()
@@ -47,7 +47,7 @@ class QuotationResourceBuildFiltersTestCase(test.TestCase):
                          self.resource.custom_filters)
 
 
-class QuotationResourceTestCase(test.TestCase):
+class QuotationResourceTest(test.TestCase):
 
     def setUp(self):
         self.resource = QuotationResource()

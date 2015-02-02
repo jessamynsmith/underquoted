@@ -18,7 +18,7 @@ def _create_quotation(author, text):
     return quotation
 
 
-class ViewsTestCase(test.TestCase):
+class ViewsTest(test.TestCase):
 
     def setUp(self):
         settings.MAX_PER_PAGE = 5
