@@ -4,4 +4,4 @@ branch = 1
 omit = *tests*
     */migrations/*
     *__init__.py*
-    */settings/*
+    *settings*
