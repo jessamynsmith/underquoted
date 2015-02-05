@@ -14,18 +14,13 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                                         os.path.pardir))
-
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(APP_PATH, 'static'),
 )
 
 MEDIA_ROOT = 'media'
-MEDIA_URL = '/media/'
 
 ALLOWED_HOSTS = ['underquoted.herokuapp.com']
 

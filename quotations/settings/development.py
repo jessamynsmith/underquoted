@@ -9,7 +9,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'quotations',                      # Or path to database file if using sqlite3.
+        'NAME': 'quotations',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -17,12 +17,10 @@ DATABASES = {
         }
 }
 
-MEDIA_ROOT = '/tmp/media'
-MEDIA_URL = 'media'
-
 STATIC_ROOT = '/tmp/static'
-STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+MEDIA_ROOT = '/tmp/media'
 
 ALLOWED_HOSTS = ['*']
 
