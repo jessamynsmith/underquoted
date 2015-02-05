@@ -14,11 +14,10 @@ DATABASES = {
     'default': dj_database_url.config()
 }
 
-APP_PATH = os.path.realpath(os.path.join(os.path.dirname(__file__),
+BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__),
                                          os.path.pardir))
 
 # Static asset configuration
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
