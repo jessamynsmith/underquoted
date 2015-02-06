@@ -19,7 +19,7 @@ Fork the project on github and git clone your fork, e.g.:
 
 Create a virtualenv and install dependencies:
 
-    mkvirtualenv quotations
+    mkvirtualenv quotations --python=/path/to/python3
     pip install -r requirements/development.txt
 
 Use dev settings:
