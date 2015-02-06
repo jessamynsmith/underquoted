@@ -1,7 +1,5 @@
 from quotations.settings.common import *
 
-import os
-
 SECRET_KEY = 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd'
 
 DEBUG = True
