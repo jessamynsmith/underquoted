@@ -7,7 +7,7 @@ install: "pip install -r requirements/development.txt"
 
 # command to run tests
 script:
-    - python manage.py test --settings=quotations.settings.development --with-coverage
+    - coverage run manage.py test quotations --settings=quotations.settings.development
     - flake8
 
 # coverage!

@@ -33,7 +33,8 @@ Set up db:
 
 Run tests and view coverage:
 
-     python manage.py test --with-coverage
+     coverage run manage.py test quotations
+     coverage report
 
 Check code style:
 
