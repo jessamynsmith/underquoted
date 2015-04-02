@@ -22,7 +22,7 @@ Create a virtualenv and install dependencies:
     mkvirtualenv quotations --python=/path/to/python3
     pip install -r requirements/development.txt
 
-Use dev settings:
+Use development settings:
 
     export DJANGO_SETTINGS_MODULE=quotations.settings.development
 
