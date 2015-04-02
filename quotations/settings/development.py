@@ -22,5 +22,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 MEDIA_ROOT = '/tmp/media'
 
 ALLOWED_HOSTS = ['*']
+SSLIFY_DISABLE = True
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'

@@ -58,6 +58,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'sslify.middleware.SSLifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,6 +69,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'quotations.urls'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'quotations.wsgi.application'
