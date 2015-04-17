@@ -7,9 +7,17 @@ install: "pip install -r requirements/development.txt"
 
 # command to run tests
 script:
-    - coverage run manage.py test quotations --settings=quotations.settings.development
-    - flake8
+  - coverage run manage.py test quotations --settings=quotations.settings.development
+  - flake8
 
 # coverage!
 after_success:
-    coveralls
+  coveralls
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: ASHzgaRRjiClXtTmysAqiNxqYGqC7US1FEp+q2D1w9NhqGQ+vAemwpERXOaK086yXKCdOF7frDz6tcMD1cra7B92rvclLBAjXio2sUqSirfoqK6gDREV/tSYZ1hRKglGAtj5Nf5EM9XRsffmQRctV2601Jq0vNIpkJWVmgiFeXU=
+  app: underquoted
+  on:
+    repo: jessamynsmith/quotations
