@@ -1,5 +1,5 @@
 [run]
-source = quotations
+source = underquoted
 branch = 1
 omit = *tests*
     */migrations/*
