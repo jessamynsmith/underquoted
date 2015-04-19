@@ -7,7 +7,7 @@ install: "pip install -r requirements/development.txt"
 
 # command to run tests
 script:
-  - coverage run manage.py test quotations --settings=quotations.settings.development
+  - coverage run manage.py test underquoted --settings=underquoted.settings.development
   - flake8
 
 # coverage!
@@ -20,4 +20,4 @@ deploy:
     secure: ASHzgaRRjiClXtTmysAqiNxqYGqC7US1FEp+q2D1w9NhqGQ+vAemwpERXOaK086yXKCdOF7frDz6tcMD1cra7B92rvclLBAjXio2sUqSirfoqK6gDREV/tSYZ1hRKglGAtj5Nf5EM9XRsffmQRctV2601Jq0vNIpkJWVmgiFeXU=
   app: underquoted
   on:
-    repo: jessamynsmith/quotations
+    repo: jessamynsmith/underquoted

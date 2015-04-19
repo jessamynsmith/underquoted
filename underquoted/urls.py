@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from tastypie.api import Api
-from quotations.apps.api import v1 as api
-from quotations.apps.quotations import views as quotation_views
+from underquoted.apps.api import v1 as api
+from underquoted.apps.quotations import views as quotation_views
 
 admin.autodiscover()
 

@@ -1,8 +1,8 @@
 from django import test
 from django.contrib import admin
 
-from quotations.apps.quotations import models
-from quotations.apps.quotations import admin as quotations_admin
+from underquoted.apps.quotations import models
+from underquoted.apps.quotations import admin as quotations_admin
 
 
 class AdminTest(test.TestCase):

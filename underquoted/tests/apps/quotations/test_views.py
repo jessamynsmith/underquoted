@@ -2,8 +2,8 @@ from django.conf import settings
 from django.http import HttpRequest, HttpResponseRedirect, QueryDict
 from django import test
 
-from quotations.apps.quotations import models as quotation_models
-from quotations.apps.quotations import views
+from underquoted.apps.quotations import models as quotation_models
+from underquoted.apps.quotations import views
 
 
 def _create_author(name):

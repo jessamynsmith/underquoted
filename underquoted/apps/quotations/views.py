@@ -4,8 +4,8 @@ from django.db.models import Q
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 
-from quotations.apps.quotations import models as q_models
-from quotations.libs import query_set
+from underquoted.apps.quotations import models as q_models
+from underquoted.libs import query_set
 
 
 def redirect_to_random(request):

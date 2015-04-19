@@ -1,4 +1,4 @@
-from quotations.settings.common import *
+from underquoted.settings.common import *
 
 SECRET_KEY = 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd'
 
@@ -8,7 +8,7 @@ TEMPLATE_DEBUG = DEBUG
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'quotations',
+        'NAME': 'underquoted',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',

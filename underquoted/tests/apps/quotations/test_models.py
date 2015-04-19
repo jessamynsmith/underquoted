@@ -1,7 +1,7 @@
 from datetime import date
 from django import test
 
-from quotations.apps.quotations import models as quotation_models
+from underquoted.apps.quotations import models as quotation_models
 
 
 class AuthorTest(test.TestCase):

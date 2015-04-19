@@ -1,4 +1,4 @@
-from quotations.settings.common import *
+from underquoted.settings.common import *
 
 import dj_database_url
 import os

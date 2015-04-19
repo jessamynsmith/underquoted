@@ -68,12 +68,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'quotations.urls'
+ROOT_URLCONF = 'underquoted.urls'
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'quotations.wsgi.application'
+WSGI_APPLICATION = 'underquoted.wsgi.application'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -93,8 +93,8 @@ INSTALLED_APPS = [
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'tastypie',
-    'quotations.apps.api',
-    'quotations.apps.quotations',
+    'underquoted.apps.api',
+    'underquoted.apps.quotations',
 ]
 
 MAX_PER_PAGE = 5

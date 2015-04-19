@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% with "The Underquoted" as title %}
+
+  <head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="screen"/>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="{{ STATIC_URL }}images/web_icon.png"/>
+    <link rel="apple-touch-icon" href="{{ STATIC_URL }}images/Icon.png"/>
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/Icon.png"/>
+
+    <title>{{ title }}</title>
+  </head>
+  <body>
+
+  <a class="header" href="{% url 'redirect_to_random' %}">
+    <div>
+      <span class="title">{{ title }}</span>
+
+      <div class="small">Quoting the underquoted members of society</div>
+    </div>
+  </a>
+  <br/>
+
+  {% block content %}{% endblock %}
+
+  {% block footer %}
+    <div class="small">
+      Want to contribute? Check out the github project:
+      <a href="https://github.com/jessamynsmith/underquoted">https://github.com/jessamynsmith/underquoted</a>
+    </div>
+  {% endblock %}
+
+  </body>
+
+{% endwith %}
+
+</html>

@@ -18,7 +18,7 @@ class Author(models.Model):
 
 class Quotation(models.Model):
 
-    author = models.ForeignKey(Author, related_name='quotations')
+    author = models.ForeignKey(Author, related_name='underquoted')
     text = models.CharField(max_length=500, unique=True)
 
     def __str__(self):
