@@ -16,7 +16,7 @@ djorm-ext-pgfulltext = 0.9.3
 
 [production]
 dj-database-url = 0.3.0
-gunicorn = 19.2.0
+gunicorn = 19.3.0
 
 [development]
 coverage = 3.7.1
