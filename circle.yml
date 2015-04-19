@@ -14,7 +14,7 @@ test:
         - DJANGO_SETTINGS_MODULE=underquoted.settings.development PYTHONPATH=. coveralls
 
 deployment:
-  production:
-    branch: master
-    heroku:
-      appname: underquoted
+    production:
+        branch: master
+        commands:
+            - sh scripts/deploy_to_heroku.sh circle
