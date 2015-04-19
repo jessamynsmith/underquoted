@@ -5,7 +5,7 @@ from email.utils import formataddr
 
 
 ADMINS = (
-    (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL')),
+    (os.environ.get('ADMIN_NAME', 'admin'), os.environ.get('ADMIN_EMAIL', 'example@example.com')),
 )
 
 MANAGERS = ADMINS
