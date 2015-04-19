@@ -71,6 +71,40 @@ a.header {
     text-indent: 80px;
 }
 
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    height: 54px;
+}
+
+.logo a:link, .logo a:visited, .logo a:hover, .logo a:active {
+    color: #000000;
+    text-decoration: none;
+}
+
+.brand {
+    float: left;
+    font-weight: bold;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.brand img {
+    float: left;
+    margin-top: -5px;
+    margin-right: 10px;
+}
+
+.logo div {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.medium {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
 .small {
     font-size: 12px;
     line-height: 10px;
@@ -79,6 +113,10 @@ a.header {
 .center {
     width: 100%;
     text-align: center;
+}
+
+.spacing_top {
+    margin-top: 10px;
 }
 
 .footer {

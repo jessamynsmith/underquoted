@@ -16,16 +16,17 @@
   </head>
   <body>
 
-  <a class="header" href="{% url 'redirect_to_random' %}">
-    <div>
-      <span class="title">{{ title }}</span>
+  <div class="logo">
+    <a class="brand" href="{% url 'redirect_to_random' %}">
+      <img src="{{ STATIC_URL }}images/logo.png" alt="underquoted logo">
+      <span class="title">{{ title }}</span><br>
+      <span class="medium">Quoting the underquoted members of society</span>
+    </a>
+  </div>
 
-      <div class="small">Quoting the underquoted members of society</div>
-    </div>
-  </a>
-  <br/>
-
-  {% block content %}{% endblock %}
+  <div class="spacing_top">
+    {% block content %}{% endblock %}
+  </div>
 
   {% block footer %}
     <br>
