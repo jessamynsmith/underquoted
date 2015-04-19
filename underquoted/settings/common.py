@@ -4,6 +4,9 @@ import os
 from email.utils import formataddr
 
 
+BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__),
+                                         os.path.pardir))
+
 ADMINS = (
     (os.environ.get('ADMIN_NAME', 'admin'), os.environ.get('ADMIN_EMAIL', 'example@example.com')),
 )
@@ -29,9 +32,6 @@ USE_L10N = True
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
 
-APP_PATH = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                                         os.path.pardir))
-
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
@@ -40,7 +40,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    APP_PATH + '/static/',
+    BASE_DIR + '/static/',
 )
 
 # List of finder classes that know how to find static files in
@@ -72,7 +72,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    APP_PATH + '/templates/',
+    BASE_DIR + '/templates/',
 )
 
 INSTALLED_APPS = [
