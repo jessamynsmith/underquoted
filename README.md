@@ -30,6 +30,10 @@ Set up db:
 
     python manage.py syncdb
     python manage.py migrate
+    
+    In psql:
+    CREATE EXTENSION unaccent;
+    ALTER FUNCTION unaccent(text) IMMUTABLE;
 
 Run tests and view coverage:
 

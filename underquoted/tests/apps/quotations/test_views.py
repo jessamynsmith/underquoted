@@ -24,9 +24,9 @@ class ViewsTest(test.TestCase):
         settings.MAX_PER_PAGE = 5
         self.request = HttpRequest()
         self.author1 = _create_author('Janet Livingston')
-        self.author2 = _create_author('Marie Algernon')
+        self.author2 = _create_author('Faith Algernon')
         self.quotation1 = _create_quotation(self.author1, "2b or not 2b")
-        self.quotation2 = _create_quotation(self.author1, "All for one")
+        self.quotation2 = _create_quotation(self.author1, "Faithful to one")
         self.quotation3 = _create_quotation(self.author2, "Not I, one said")
 
     def test_redirect_to_random(self):
@@ -38,13 +38,13 @@ class ViewsTest(test.TestCase):
         self.assertRegex(response.url, '/quotations/[0-9]+/')
 
     def test_list_quotations_search(self):
-        self.request.GET = QueryDict(u'search_text=al')
+        self.request.GET = QueryDict(u'search_text=faith')
 
         response = views.list_quotations(self.request)
 
         self.assertContains(response, '<title>The Underquoted</title>')
         self.assertContains(response, '<div>2b or not 2b</div>', count=0)
-        self.assertContains(response, '<div>All for one</div>')
+        self.assertContains(response, '<div>Faithful to one</div>')
         self.assertContains(response, '<div>Not I, one said</div>')
         self.assertContains(response, 'page=1', count=0)
         self.assertContains(response, 'page=2', count=0)
@@ -56,7 +56,7 @@ class ViewsTest(test.TestCase):
 
         self.assertContains(response, '<title>The Underquoted</title>')
         self.assertContains(response, '<div>2b or not 2b</div>')
-        self.assertContains(response, '<div>All for one</div>')
+        self.assertContains(response, '<div>Faithful to one</div>')
         self.assertContains(response, '<div>Not I, one said</div>', count=0)
         self.assertContains(response, 'page=1', count=0)
         self.assertContains(response, 'page=2')
@@ -69,7 +69,7 @@ class ViewsTest(test.TestCase):
 
         self.assertContains(response, '<title>The Underquoted</title>')
         self.assertContains(response, '<div>2b or not 2b</div>', count=0)
-        self.assertContains(response, '<div>All for one</div>', count=0)
+        self.assertContains(response, '<div>Faithful one</div>', count=0)
         self.assertContains(response, '<div>Not I, one said</div>')
         self.assertContains(response, 'page=1', count=2)
         self.assertContains(response, 'page=2', count=0)
@@ -79,5 +79,5 @@ class ViewsTest(test.TestCase):
 
         self.assertContains(response, '<title>The Underquoted</title>')
         self.assertContains(response, '<div>2b or not 2b</div>', count=0)
-        self.assertContains(response, '<div>All for one</div>')
+        self.assertContains(response, '<div>Faithful to one</div>')
         self.assertContains(response, '<div>Not I, one said</div>', count=0)

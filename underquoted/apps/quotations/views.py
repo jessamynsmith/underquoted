@@ -17,10 +17,9 @@ def list_quotations(request):
     search_text = request.GET.get('search_text', '').strip()
     quotations = q_models.Quotation.objects.all()
     if search_text:
-        quotations = quotations.filter(
-            Q(text__icontains=search_text)
-            | Q(author__name__icontains=search_text)
-        )
+        quotation_ids = quotations.search(search_text).values_list('id', flat=True)
+        authors = q_models.Author.objects.search(search_text)
+        quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
 
     paginator = Paginator(quotations, settings.MAX_PER_PAGE)
 

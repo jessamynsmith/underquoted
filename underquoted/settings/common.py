@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'djorm_pgfulltext',
     'tastypie',
     'underquoted.apps.api',
     'underquoted.apps.quotations',
