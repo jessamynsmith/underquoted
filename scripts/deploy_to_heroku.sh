@@ -8,8 +8,8 @@ CIRCLE=$1
 DEPLOY_DATE=`date "+%FT%T%z"`
 
 heroku config:set --app=underquoted \
-ADMIN_EMAIL="geekchick77@gmail.com" \
-ADMIN_NAME="geekchick77" \
+ADMIN_EMAIL="the.underquoted@gmail.com" \
+ADMIN_NAME="the.underquoted" \
 DJANGO_SETTINGS_MODULE=underquoted.settings.production \
 DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY \
 DEPLOY_DATE="$DEPLOY_DATE" \

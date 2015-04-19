@@ -1,6 +1,9 @@
 # Django settings for quotations project.
 import os
 
+from email.utils import formataddr
+
+
 ADMINS = (
     (os.environ.get('ADMIN_NAME'), os.environ.get('ADMIN_EMAIL')),
 )
@@ -99,3 +102,10 @@ INSTALLED_APPS = [
 ]
 
 MAX_PER_PAGE = 5
+
+DEFAULT_FROM_EMAIL = formataddr(ADMINS[0])
+EMAIL_HOST = os.environ.get('MAILGUN_SMTP_SERVER')
+EMAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT')
+EMAIL_HOST_USER = os.environ.get('MAILGUN_SMTP_LOGIN')
+EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD')
+EMAIL_USE_TLS = True
