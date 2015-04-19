@@ -1,4 +1,5 @@
 # Django settings for quotations project.
+import dateutil.parser
 import os
 
 from email.utils import formataddr
@@ -50,6 +51,18 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "settings_context_processor.context_processors.settings",
+)
+
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -83,6 +96,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'settings_context_processor',
     'djorm_pgfulltext',
     'tastypie',
     'underquoted.apps.api',
@@ -97,3 +111,8 @@ EMAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT')
 EMAIL_HOST_USER = os.environ.get('MAILGUN_SMTP_LOGIN')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD')
 EMAIL_USE_TLS = True
+
+DEPLOY_DATE = dateutil.parser.parse(os.environ.get('DEPLOY_DATE', ''))
+VERSION = '0.1'
+
+TEMPLATE_VISIBLE_SETTINGS = ['DEPLOY_DATE', 'VERSION']

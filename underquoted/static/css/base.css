@@ -72,5 +72,16 @@ a.header {
 }
 
 .small {
-    font-size: 10pt;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+.footer {
+    padding-top: 12px;
+    color: grey;
 }
