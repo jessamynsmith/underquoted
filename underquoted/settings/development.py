@@ -16,10 +16,10 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/tmp/static'
+STATIC_ROOT = '/tmp/underquoted/static'
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-MEDIA_ROOT = '/tmp/media'
+MEDIA_ROOT = '/tmp/underquoted/media'
 
 ALLOWED_HOSTS = ['*']
 SSLIFY_DISABLE = True
