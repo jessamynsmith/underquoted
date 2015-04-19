@@ -24,4 +24,4 @@ fi
 
 heroku run python manage.py syncdb --noinput --app=underquoted
 heroku run python manage.py migrate --noinput --app=underquoted
-python manage.py update_search_field quotations
+heroku run python manage.py update_search_field quotations
