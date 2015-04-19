@@ -12,7 +12,7 @@ six = 1.9.0
 dj-static = 0.0.6
 static3 = 0.5.1
 django-sslify = 0.2.7
-djorm-ext-pgfulltext = 0.10
+djorm-ext-pgfulltext = 0.9.3
 
 [production]
 dj-database-url = 0.3.0
