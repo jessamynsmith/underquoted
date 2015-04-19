@@ -1,7 +1,7 @@
 Quotations
 ================================
 
-[![Build Status](https://travis-ci.org/jessamynsmith/quotations.svg?branch=master)](https://travis-ci.org/jessamynsmith/quotations)
+[![Build Status](https://circleci.com/gh/jessamynsmith/underquoted.svg?style=shield)](https://circleci.com/gh/jessamynsmith/underquoted)
 [![Coverage Status](https://coveralls.io/repos/jessamynsmith/quotations/badge.svg?branch=master)](https://coveralls.io/r/jessamynsmith/quotations?branch=master)
 
 Simple site that serves a page with a random quotation and allows searching of quotations.
