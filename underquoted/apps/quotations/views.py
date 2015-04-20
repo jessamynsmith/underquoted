@@ -9,11 +9,17 @@ from underquoted.apps.quotations import models as quotation_models, serializers
 from underquoted.libs import query_set
 
 
-def _search_quotations(search_text):
+def _search_terms(queryset, terms):
+    for term in terms:
+        queryset = queryset.search(term)
+    return queryset
+
+
+def _search_quotations(search_terms):
     quotations = quotation_models.Quotation.objects.all()
-    if search_text:
-        quotation_ids = quotations.search(search_text).values_list('id', flat=True)
-        authors = quotation_models.Author.objects.search(search_text)
+    if search_terms:
+        quotation_ids = _search_terms(quotations, search_terms).values_list('id', flat=True)
+        authors = _search_terms(quotation_models.Author.objects.all(), search_terms)
         quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
     return quotations
 
@@ -22,7 +28,7 @@ class QuotationViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.QuotationSerializer
 
     def get_queryset(self):
-        quotations = _search_quotations(self.request.GET.get('search', ''))
+        quotations = _search_quotations(self.request.GET.getlist('search', ''))
         if self.request.GET.get('random', False):
             quotations = query_set.get_random(quotations)
         return quotations
@@ -35,7 +41,7 @@ def redirect_to_random(request):
 
 def list_quotations(request):
     search_text = request.GET.get('search_text', '').strip()
-    quotations = _search_quotations(search_text)
+    quotations = _search_quotations(search_text.split())
 
     paginator = Paginator(quotations, settings.MAX_PER_PAGE)
 

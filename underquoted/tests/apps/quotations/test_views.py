@@ -42,6 +42,22 @@ class QuotationViewSetTest(test.TestCase):
         self.assertEqual('Faithful to one', queryset[0].text)
         self.assertEqual('Not I, one said', queryset[1].text)
 
+    def test_get_queryset_search_multiple_terms_matches_quotation(self):
+        self.view_set.request.GET = QueryDict(u'search=said&search=one')
+
+        queryset = self.view_set.get_queryset()
+
+        self.assertEqual(1, len(queryset))
+        self.assertEqual('Not I, one said', queryset[0].text)
+
+    def test_get_queryset_search_multiple_terms_matches_author(self):
+        self.view_set.request.GET = QueryDict(u'search=Algernon Faith')
+
+        queryset = self.view_set.get_queryset()
+
+        self.assertEqual(1, len(queryset))
+        self.assertEqual('Not I, one said', queryset[0].text)
+
     @patch('underquoted.libs.query_set.get_random')
     def test_get_queryset_random(self, mock_get_random):
         self.view_set.request.GET = QueryDict(u'random=1')
