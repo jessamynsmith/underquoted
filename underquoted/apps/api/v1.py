@@ -1,7 +1,7 @@
 from tastypie.authorization import DjangoAuthorization
 from tastypie import fields
 from tastypie.resources import ModelResource, ALL_WITH_RELATIONS
-from underquoted.apps.quotations import models as quotations_models
+from underquoted.apps.quotations import models as quotation_models
 from underquoted.libs.auth import MethodAuthentication
 
 
@@ -13,7 +13,7 @@ class BaseMeta(object):
 class AuthorResource(ModelResource):
 
     class Meta(BaseMeta):
-        queryset = quotations_models.Author.objects.all()
+        queryset = quotation_models.Author.objects.all()
         resource_name = 'authors'
         filtering = {
             'name': ['exact', 'icontains']
@@ -28,7 +28,7 @@ class QuotationResource(ModelResource):
         self.custom_filters = {}
 
     class Meta(BaseMeta):
-        queryset = quotations_models.Quotation.objects.all()
+        queryset = quotation_models.Quotation.objects.all()
         resource_name = 'quotations'
         filtering = {
             'text': ['icontains'],

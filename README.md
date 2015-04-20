@@ -15,16 +15,16 @@ Development
 
 Fork the project on github and git clone your fork, e.g.:
 
-    git clone https://github.com/<username>/quotations.git
+    git clone https://github.com/<username>/underquoted.git
 
 Create a virtualenv and install dependencies:
 
-    mkvirtualenv quotations --python=/path/to/python3
+    mkvirtualenv underquoted --python=/path/to/python3
     pip install -r requirements/development.txt
 
 Use development settings:
 
-    export DJANGO_SETTINGS_MODULE=quotations.settings.development
+    export DJANGO_SETTINGS_MODULE=underquoted.settings.development
 
 Set up db:
 
@@ -37,7 +37,7 @@ Set up db:
 
 Run tests and view coverage:
 
-     coverage run manage.py test quotations
+     coverage run manage.py test
      coverage report
 
 Check code style:

@@ -1,4 +1,4 @@
-# Django settings for quotations project.
+# Django settings for underquoted project.
 import dateutil.parser
 import os
 
