@@ -19,6 +19,7 @@ djangorestframework = 3.1.1
 [production]
 dj-database-url = 0.3.0
 gunicorn = 19.3.0
+newrelic = 2.50.0.39
 
 [development]
 coverage = 4.0a5

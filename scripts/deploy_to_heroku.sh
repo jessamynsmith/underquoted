@@ -8,6 +8,7 @@ CIRCLE=$1
 DEPLOY_DATE=`date "+%FT%T%z"`
 
 heroku config:set --app=underquoted \
+NEW_RELIC_APP_NAME='underquoted' \
 ADMIN_EMAIL="the.underquoted@gmail.com" \
 ADMIN_NAME="the.underquoted" \
 DJANGO_SETTINGS_MODULE=underquoted.settings.production \
