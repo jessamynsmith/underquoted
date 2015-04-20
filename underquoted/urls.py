@@ -3,8 +3,8 @@ from django.contrib import admin
 from rest_framework import routers
 from tastypie.api import Api
 
-from underquoted.apps.api import v1 as api
-from underquoted.apps.quotations import views as quotation_views
+from api import v1 as api
+from quotations import views as quotation_views
 
 
 admin.autodiscover()

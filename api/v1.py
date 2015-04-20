@@ -1,8 +1,9 @@
 from tastypie.authorization import DjangoAuthorization
 from tastypie import fields
 from tastypie.resources import ModelResource, ALL_WITH_RELATIONS
-from underquoted.apps.quotations import models as quotation_models
-from underquoted.libs.auth import MethodAuthentication
+
+from quotations import models as quotation_models
+from libs.auth import MethodAuthentication
 
 
 class BaseMeta(object):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from underquoted.apps.quotations import models as quotation_models
+from quotations import models as quotation_models
 
 
 class QuotationSerializer(serializers.ModelSerializer):

@@ -1,8 +1,8 @@
 from django.http import HttpRequest, QueryDict
 from django import test
 
-from underquoted.apps.api.v1 import QuotationResource
-from underquoted.apps.quotations import models as quotation_models
+from api.v1 import QuotationResource
+from quotations import models as quotation_models
 
 
 def _create_author(name):

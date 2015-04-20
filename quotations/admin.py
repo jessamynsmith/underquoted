@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from underquoted.apps.quotations import models
+from quotations import models
 
 
 class AuthorAdmin(admin.ModelAdmin):

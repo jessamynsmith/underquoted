@@ -5,8 +5,8 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from rest_framework import viewsets
 
-from underquoted.apps.quotations import models as quotation_models, serializers
-from underquoted.libs import query_set
+from quotations import models as quotation_models, serializers
+from libs import query_set
 
 
 def _search_terms(queryset, terms):

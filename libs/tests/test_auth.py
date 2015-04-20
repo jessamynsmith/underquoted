@@ -2,7 +2,7 @@ from django import test
 from django.http import HttpRequest
 from tastypie.http import HttpUnauthorized
 
-from underquoted.libs.auth import MethodAuthentication
+from libs.auth import MethodAuthentication
 
 
 class MethodAuthenticationTest(test.TestCase):

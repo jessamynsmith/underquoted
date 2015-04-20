@@ -100,8 +100,8 @@ INSTALLED_APPS = [
     'djorm_pgfulltext',
     'rest_framework',
     'tastypie',
-    'underquoted.apps.api',
-    'underquoted.apps.quotations',
+    'api',
+    'quotations',
 ]
 
 PAGE_SIZE = 5

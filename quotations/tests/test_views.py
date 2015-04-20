@@ -4,8 +4,8 @@ from django import test
 from mock import patch
 from rest_framework.request import Request
 
-from underquoted.apps.quotations import models as quotation_models
-from underquoted.apps.quotations import views
+from quotations import models as quotation_models
+from quotations import views
 
 
 def _create_author(name):
@@ -58,7 +58,7 @@ class QuotationViewSetTest(test.TestCase):
         self.assertEqual(1, len(queryset))
         self.assertEqual('Not I, one said', queryset[0].text)
 
-    @patch('underquoted.libs.query_set.get_random')
+    @patch('libs.query_set.get_random')
     def test_get_queryset_random(self, mock_get_random):
         self.view_set.request.GET = QueryDict(u'random=1')
 
