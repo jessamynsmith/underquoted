@@ -98,10 +98,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'settings_context_processor',
     'djorm_pgfulltext',
+    'rest_framework',
     'tastypie',
     'underquoted.apps.api',
     'underquoted.apps.quotations',
 ]
+
+PAGE_SIZE = 5
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+}
 
 MAX_PER_PAGE = 5
 

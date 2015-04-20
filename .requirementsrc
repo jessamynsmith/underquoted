@@ -14,6 +14,7 @@ static3 = 0.5.1
 django-settings-context-processor = 0.2
 django-sslify = 0.2.7
 djorm-ext-pgfulltext = 0.9.3
+djangorestframework = 3.1.1
 
 [production]
 dj-database-url = 0.3.0

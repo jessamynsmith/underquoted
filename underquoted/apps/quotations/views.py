@@ -3,23 +3,39 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
+from rest_framework import viewsets
 
-from underquoted.apps.quotations import models as q_models
+from underquoted.apps.quotations import models as quotation_models, serializers
 from underquoted.libs import query_set
 
 
+def _search_quotations(search_text):
+    quotations = quotation_models.Quotation.objects.all()
+    if search_text:
+        quotation_ids = quotations.search(search_text).values_list('id', flat=True)
+        authors = quotation_models.Author.objects.search(search_text)
+        quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
+    return quotations
+
+
+class QuotationViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.QuotationSerializer
+
+    def get_queryset(self):
+        quotations = _search_quotations(self.request.GET.get('search', ''))
+        if self.request.GET.get('random', False):
+            quotations = query_set.get_random(quotations)
+        return quotations
+
+
 def redirect_to_random(request):
-    quotations = query_set.get_random(q_models.Quotation.objects.all())
+    quotations = query_set.get_random(quotation_models.Quotation.objects.all())
     return redirect(quotations[0])
 
 
 def list_quotations(request):
     search_text = request.GET.get('search_text', '').strip()
-    quotations = q_models.Quotation.objects.all()
-    if search_text:
-        quotation_ids = quotations.search(search_text).values_list('id', flat=True)
-        authors = q_models.Author.objects.search(search_text)
-        quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
+    quotations = _search_quotations(search_text)
 
     paginator = Paginator(quotations, settings.MAX_PER_PAGE)
 
@@ -41,7 +57,7 @@ def list_quotations(request):
 
 
 def show_quotation(request, pk):
-    quotations = q_models.Quotation.objects.filter(pk=pk)
+    quotations = quotation_models.Quotation.objects.filter(pk=pk)
     return render_to_response('quotations/show.html',
                               {'quotations': quotations,
                                'pages': [1]},
