@@ -1,8 +1,8 @@
-Quotations
-================================
+Underquoted
+===========
 
 [![Build Status](https://circleci.com/gh/jessamynsmith/underquoted.svg?style=shield)](https://circleci.com/gh/jessamynsmith/underquoted)
-[![Coverage Status](https://coveralls.io/repos/jessamynsmith/quotations/badge.svg?branch=master)](https://coveralls.io/r/jessamynsmith/quotations?branch=master)
+[![Coverage Status](https://coveralls.io/repos/jessamynsmith/underquoted/badge.svg?branch=master)](https://coveralls.io/r/jessamynsmith/underquoted?branch=master)
 
 Simple site that serves a page with a random quotation and allows searching of quotations.
 Also provides a quotation API. Check out the live app:
