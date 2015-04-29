@@ -19,11 +19,7 @@ class Author(models.Model):
     )
 
     def __str__(self):
-        death_year = ''
-        if self.date_of_death:
-            death_year = self.date_of_death.year
-        return "%s (%s-%s)" % (self.name, self.date_of_birth.year,
-                               death_year)
+        return self.name
 
 
 class Quotation(models.Model):

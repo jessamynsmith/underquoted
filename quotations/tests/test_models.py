@@ -13,11 +13,7 @@ class AuthorTest(test.TestCase):
         self.author.save()
 
     def test_str(self):
-        self.assertEqual(u'Jane (1950-)', '%s' % self.author)
-
-    def test_str_with_death_year(self):
-        self.author.date_of_death = date(1999, 3, 1)
-        self.assertEqual(u'Jane (1950-1999)', '%s' % self.author)
+        self.assertEqual(u'Jane', '%s' % self.author)
 
 
 class QuotationTest(test.TestCase):
