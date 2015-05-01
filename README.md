@@ -26,7 +26,7 @@ Use development settings:
 
     export DJANGO_SETTINGS_MODULE=underquoted.settings.development
 
-Set up db:
+Set up db (you must have PostgreSQL installed):
 
     python manage.py syncdb
     python manage.py migrate
