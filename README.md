@@ -48,3 +48,29 @@ Check code style:
 Run server:
 
     python manage.py runserver
+    
+    
+Continuous Integration and Deployment
+-------------------------------------
+
+This project is already set up for continuous integration and deployment using circleci, coveralls,
+and Heroku.
+
+Make a new Heroku app, and add the following addons:
+
+    Heroku Postgres
+	Mailgun
+	New Relic APM
+	Papertrail
+
+Enable the project on coveralls.io, and copy the repo token
+
+Enable the project on circleci.io, and under Project Settings -> Environment variables, add:
+
+    COVERALLS_REPO_TOKEN <value_copied_from_coveralls>
+    
+On circleci.io, under Project Settings -> Heroku Deployment, follow the steps to enable
+Heroku builds. At this point, you may need to cancel any currently running builds, then run
+a new build.
+
+
