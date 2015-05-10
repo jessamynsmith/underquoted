@@ -17,7 +17,8 @@ Fork the project on github and git clone your fork, e.g.:
 
     git clone https://github.com/<username>/underquoted.git
 
-Create a virtualenv and install dependencies:
+Create a virtualenv using Python 3 and install dependencies. NOTE! You must change 'path/to/python3'
+to be the actual path to python3 on your system.
 
     mkvirtualenv underquoted --python=/path/to/python3
     pip install -r requirements/development.txt
