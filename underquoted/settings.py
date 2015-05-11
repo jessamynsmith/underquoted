@@ -1,1 +1,1 @@
-from underquoted.settings.production import *
+from underquoted.settings.development import *
