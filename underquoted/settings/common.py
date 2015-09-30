@@ -68,6 +68,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
     'sslify.middleware.SSLifyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -78,6 +79,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'underquoted.urls'
 
+CORS_ORIGIN_ALLOW_ALL = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -98,6 +100,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'settings_context_processor',
     'djorm_pgfulltext',
     'rest_framework',
