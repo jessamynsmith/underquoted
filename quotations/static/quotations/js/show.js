@@ -2,8 +2,8 @@ $(document).ready(function () {
   gtag('event', 'page_view');
 
   gtag('event', 'purchase_attempt', {
-    'event_label': 'single',
-    'event_action': '5'
+    'event_action': 'single',
+    'event_label': '5'
   });
 
   $("#search").on('click', function (event) {
