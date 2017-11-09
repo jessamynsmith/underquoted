@@ -1,15 +1,17 @@
 $(document).ready(function () {
   gtag('event', 'page_view');
 
-  gtag('event', 'purchase_attempt', {
+  var result = gtag('event', 'purchase_attempt', {
     'purchase_type': 'single',
     'article_price': '5'
   });
+  console.log(result);
 
-  gtag('event', 'purchase', {
+  var result = gtag('event', 'purchase', {
     'purchase_type': 'single',
     'article_price': '5'
   });
+  console.log(result);
 
   $("#search").on('click', function (event) {
     gtag('event', 'search', {
