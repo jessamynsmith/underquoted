@@ -2,6 +2,10 @@
 machine:
     python:
         version: 3.4.2
+    environment:
+        DATABASE_URL: "postgres://ubuntu:@localhost/circle_test"
+        DJANGO_DEBUG: 0
+        DJANGO_ENABLE_SSL: 0
 
 test:
     override:
