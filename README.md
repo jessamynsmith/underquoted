@@ -21,7 +21,7 @@ Create a virtualenv using Python 3 and install dependencies. NOTE! You must chan
 to be the actual path to python3 on your system.
 
     mkvirtualenv underquoted --python=/path/to/python3
-    pip install -r requirements/development.txt
+    pip install -r requirements.txt
 
 Use development settings:
 
