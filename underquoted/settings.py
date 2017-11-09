@@ -5,8 +5,8 @@ import os
 from email.utils import formataddr
 
 
+HOME_DIR = os.path.expanduser("~")
 BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
-print(BASE_DIR)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd')
@@ -142,11 +142,15 @@ REST_FRAMEWORK = {
 MAX_PER_PAGE = 5
 
 DEFAULT_FROM_EMAIL = formataddr(ADMINS[0])
-EMAIL_HOST = os.environ.get('MAILGUN_SMTP_SERVER')
-EMAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT')
-EMAIL_HOST_USER = os.environ.get('MAILGUN_SMTP_LOGIN')
-EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('SENDGRID_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
 EMAIL_USE_TLS = True
+
+if not EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = os.path.join(HOME_DIR, 'underquoted', 'emails')
 
 DEPLOY_DATE = dateutil.parser.parse(os.environ.get('DEPLOY_DATE', ''))
 VERSION = '0.1'

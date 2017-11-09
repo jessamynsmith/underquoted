@@ -67,7 +67,7 @@ and Heroku.
 Make a new Heroku app, and add the following addons:
 
     Heroku Postgres
-	Mailgun
+	SendGrid
 	New Relic APM
 	Papertrail
 
