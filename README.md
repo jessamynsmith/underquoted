@@ -22,19 +22,27 @@ to be the actual path to python3 on your system.
 
     mkvirtualenv underquoted --python=/path/to/python3
     pip install -r requirements.txt
+    
+Create database (you must have PostgreSQL installed):
 
-Use development settings:
+    createdb underquoted
+    psql underquoted
+    
+In psql:
 
-    export DJANGO_SETTINGS_MODULE=underquoted.settings.development
+    CREATE EXTENSION unaccent;
+    ALTER FUNCTION unaccent(text) IMMUTABLE;
 
-Set up db (you must have PostgreSQL installed):
+Set environment variables as desired. DATABASE_URL is required. Recommended dev settings:
+
+    export DATABASE_URL=postgres://<username>@127.0.0.1:5432/underquoted
+    export DJANGO_DEBUG=1
+    export DJANGO_ENABLE_SSL=0
+
+Set up db:
 
     python manage.py syncdb
     python manage.py migrate
-    
-    In psql:
-    CREATE EXTENSION unaccent;
-    ALTER FUNCTION unaccent(text) IMMUTABLE;
 
 Run tests and view coverage:
 

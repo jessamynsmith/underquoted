@@ -12,7 +12,6 @@ heroku config:set --app=underquoted \
 NEW_RELIC_APP_NAME='underquoted' \
 ADMIN_EMAIL="the.underquoted@gmail.com" \
 ADMIN_NAME="the.underquoted" \
-DJANGO_SETTINGS_MODULE=underquoted.settings.production \
 DJANGO_SECRET_KEY="$SECRET" \
 DEPLOY_DATE="$DEPLOY_DATE" \
 > /dev/null

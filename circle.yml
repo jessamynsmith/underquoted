@@ -6,8 +6,8 @@ machine:
 test:
     override:
         - flake8
-        - coverage run manage.py test --settings=underquoted.settings.development
-        - DJANGO_SETTINGS_MODULE=underquoted.settings.development PYTHONPATH=. coveralls
+        - coverage run manage.py test
+        - PYTHONPATH=. coveralls
 
 deployment:
     production:
