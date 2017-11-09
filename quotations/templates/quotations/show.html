@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% load quotations_tags %}
+{% load quotations_tags static %}
 
 {% block content %}
 	<form action="{% url 'list_quotations' %}">
 	    <a class="random" href="{% url 'redirect_to_random' %}"><input class="button" value="Random"/></a>
 		<input id="search_text" name="search_text" type="text" value="{{ search_text }}"/>
-		<input class="button" type="submit" value="Search"/>
+		<input id="search" class="button" type="submit" value="Search"/>
 
 	</form>
 	<br/>
@@ -42,5 +42,7 @@
             </span>
         </div>
 	{% endif %}
+
+    <script type="text/javascript" src="{% static 'quotations/js/show.js' %}"></script>
 
 {% endblock %}
