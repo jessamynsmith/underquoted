@@ -4,6 +4,17 @@
 {% with "The Underquoted" as title %}
 
   <head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109435242-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-109435242-1');
+    </script>
+
     {% load staticfiles %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="screen"/>
 
