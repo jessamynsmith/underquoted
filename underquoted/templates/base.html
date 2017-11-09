@@ -5,6 +5,16 @@
 
   <head>
 
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="screen"/>
+
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="icon" href="{{ STATIC_URL }}images/web_icon.png"/>
+    <link rel="apple-touch-icon" href="{{ STATIC_URL }}images/Icon.png"/>
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/Icon.png"/>
+
+    <title>{{ title }}</title>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109435242-1"></script>
     <script>
@@ -15,15 +25,6 @@
       gtag('config', 'UA-109435242-1');
     </script>
 
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="screen"/>
-
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="icon" href="{{ STATIC_URL }}images/web_icon.png"/>
-    <link rel="apple-touch-icon" href="{{ STATIC_URL }}images/Icon.png"/>
-    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}images/Icon.png"/>
-
-    <title>{{ title }}</title>
   </head>
   <body>
 
