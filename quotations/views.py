@@ -1,25 +1,27 @@
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Q
-from django.shortcuts import render_to_response, redirect
-from django.template import RequestContext
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 
 from quotations import models as quotation_models, serializers
 from libs import query_set
 
 
-def _search_terms(queryset, terms):
+def _search_terms(queryset, field, terms):
     for term in terms:
-        queryset = queryset.search(term)
+        search_terms = {
+            "{}__search".format(field): term
+        }
+        queryset = queryset.filter(**search_terms)
     return queryset
 
 
 def _search_quotations(search_terms):
     quotations = quotation_models.Quotation.objects.all()
     if search_terms:
-        quotation_ids = _search_terms(quotations, search_terms).values_list('id', flat=True)
-        authors = _search_terms(quotation_models.Author.objects.all(), search_terms)
+        quotation_ids = _search_terms(quotations, "text", search_terms).values_list('id', flat=True)
+        authors = _search_terms(quotation_models.Author.objects.all(), "name", search_terms)
         quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
     return quotations
 
@@ -55,16 +57,14 @@ def list_quotations(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         quotations = paginator.page(paginator.num_pages)
 
-    return render_to_response('quotations/show.html',
+    return render(request, 'quotations/show.html',
                               {'quotations': quotations,
                                'pages': [i for i in range(1, paginator.num_pages+1)],
-                               'search_text': search_text},
-                              context_instance=RequestContext(request))
+                               'search_text': search_text})
 
 
 def show_quotation(request, pk):
     quotations = quotation_models.Quotation.objects.filter(pk=pk)
-    return render_to_response('quotations/show.html',
+    return render(request, 'quotations/show.html',
                               {'quotations': quotations,
-                               'pages': [1]},
-                              context_instance=RequestContext(request))
+                               'pages': [1]})

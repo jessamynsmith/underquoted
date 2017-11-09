@@ -1,4 +1,4 @@
-import dateutil.parser
+from django.utils.dateparse import parse_datetime
 import dj_database_url
 import os
 
@@ -13,7 +13,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'oe3-zo6yeb34h*ktvana^ejbb(^du)
 
 # Use env setting if available, otherwise make debug false
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', '0')))
-TEMPLATE_DEBUG = DEBUG
 
 SSLIFY_DISABLE = not bool(int(os.environ.get('DJANGO_ENABLE_SSL', '0')))
 ALLOWED_HOSTS = ['underquoted.herokuapp.com', 'localhost', '127.0.0.1']
@@ -102,15 +101,16 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 "django.contrib.auth.context_processors.auth",
-                "django.core.context_processors.debug",
-                "django.core.context_processors.i18n",
-                "django.core.context_processors.media",
-                "django.core.context_processors.request",
-                "django.core.context_processors.static",
-                "django.core.context_processors.tz",
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
                 "settings_context_processor.context_processors.settings",
             ],
+            'debug': DEBUG,
         },
     },
 ]
@@ -119,6 +119,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.postgres',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
@@ -126,7 +127,6 @@ INSTALLED_APPS = [
     'gunicorn',
     'corsheaders',
     'settings_context_processor',
-    'djorm_pgfulltext',
     'rest_framework',
     'tastypie',
     'api',
@@ -152,8 +152,8 @@ if not EMAIL_HOST_PASSWORD:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = os.path.join(HOME_DIR, 'underquoted', 'emails')
 
-DEPLOY_DATE = dateutil.parser.parse(os.environ.get('DEPLOY_DATE', ''))
-VERSION = '0.1'
+DEPLOY_DATE = parse_datetime(os.environ.get('DEPLOY_DATE', ''))
+VERSION = '0.2'
 
 TEMPLATE_VISIBLE_SETTINGS = ['DEPLOY_DATE', 'VERSION']
 
