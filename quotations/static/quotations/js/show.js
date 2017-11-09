@@ -2,6 +2,7 @@ $(document).ready(function () {
   gtag('event', 'page_view');
 
   var result = gtag('event', 'purchase_attempt', {
+    'event_label': 'single',
     'purchase_type': 'single',
     'article_price': '5'
   });
