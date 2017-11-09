@@ -58,13 +58,13 @@ def list_quotations(request):
         quotations = paginator.page(paginator.num_pages)
 
     return render(request, 'quotations/show.html',
-                              {'quotations': quotations,
-                               'pages': [i for i in range(1, paginator.num_pages+1)],
-                               'search_text': search_text})
+                  {'quotations': quotations,
+                   'pages': [i for i in range(1, paginator.num_pages + 1)],
+                   'search_text': search_text})
 
 
 def show_quotation(request, pk):
     quotations = quotation_models.Quotation.objects.filter(pk=pk)
     return render(request, 'quotations/show.html',
-                              {'quotations': quotations,
-                               'pages': [1]})
+                  {'quotations': quotations,
+                   'pages': [1]})
