@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  gtag('event', 'loaded');
+  gtag('event', 'page_view');
 
   $("#search").on('click', function(event) {
     gtag('event', 'search', {
