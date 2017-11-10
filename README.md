@@ -1,5 +1,4 @@
-Underquoted
-===========
+#Underquoted
 
 [![Build Status](https://circleci.com/gh/jessamynsmith/underquoted.svg?style=shield)](https://circleci.com/gh/jessamynsmith/underquoted)
 [![Coverage Status](https://coveralls.io/repos/jessamynsmith/underquoted/badge.svg?branch=master)](https://coveralls.io/r/jessamynsmith/underquoted?branch=master)
@@ -10,8 +9,13 @@ https://underquoted.herokuapp.com/
 You can inspect the API at:
 https://underquoted.herokuapp.com/api/v1/quotations/schema/?format=json
 
-Development
------------
+##Retrieve Quotes
+
+You can use curl to search quotes on the live server:
+
+    curl -vk -X GET -H "Content-Type: application/json" "https://underquoted.herokuapp.com/api/v2/quotations/?search=busy"
+
+##Development
 
 Fork the project on github and git clone your fork, e.g.:
 
@@ -58,8 +62,7 @@ Run server:
     python manage.py runserver
     
     
-Continuous Integration and Deployment
--------------------------------------
+##Continuous Integration and Deployment
 
 This project is already set up for continuous integration and deployment using circleci, coveralls,
 and Heroku.
