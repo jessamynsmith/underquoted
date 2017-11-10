@@ -8,3 +8,4 @@ class QuotationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = quotation_models.Quotation
+        fields = '__all__'
