@@ -128,8 +128,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'settings_context_processor',
     'rest_framework',
-    'tastypie',
-    'api',
     'quotations',
 ]
 

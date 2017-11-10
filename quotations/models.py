@@ -1,7 +1,5 @@
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
-from tastypie.models import create_api_key
 
 
 class Author(models.Model):
@@ -29,6 +27,3 @@ class Quotation(models.Model):
 
     def get_absolute_url(self):
         return reverse('show_quotation', args=[self.pk])
-
-
-models.signals.post_save.connect(create_api_key, sender=User)

@@ -9,7 +9,6 @@ django-cors-headers==2.1.0
 django-coverage-plugin==1.5.0
 django-settings-context-processor==0.2
 django-sslify==0.2.7
-django-tastypie==0.14.0
 djangorestframework==3.7.3
 docopt==0.6.2
 flake8==3.5.0
