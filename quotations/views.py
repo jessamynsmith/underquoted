@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Q
+from django.db.models import Count, Q
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
 
@@ -34,6 +34,15 @@ class QuotationViewSet(viewsets.ModelViewSet):
         if self.request.GET.get('random', False):
             quotations = query_set.get_random(quotations)
         return quotations
+
+
+class AuthorSummaryViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.AuthorSummarySerializer
+
+    def get_queryset(self):
+        queryset = quotation_models.Author.objects.all()
+        queryset = queryset.values('name').annotate(total_quotations=Count('underquoted'))
+        return queryset
 
 
 def redirect_to_random(request):

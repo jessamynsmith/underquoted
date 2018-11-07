@@ -9,3 +9,11 @@ class QuotationSerializer(serializers.ModelSerializer):
     class Meta:
         model = quotation_models.Quotation
         fields = '__all__'
+
+
+class AuthorSummarySerializer(serializers.ModelSerializer):
+    total_quotations = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = quotation_models.Author
+        fields = ('name', 'total_quotations',)

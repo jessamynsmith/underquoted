@@ -7,6 +7,7 @@ from quotations import views as quotation_views
 
 router = routers.DefaultRouter()
 router.register(r'quotations', quotation_views.QuotationViewSet, base_name='quotations')
+router.register(r'author_summary', quotation_views.AuthorSummaryViewSet, base_name='author_summary')
 
 urlpatterns = [
     path('', quotation_views.redirect_to_random, name='redirect_to_random'),
