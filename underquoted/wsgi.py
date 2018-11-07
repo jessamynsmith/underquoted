@@ -14,9 +14,9 @@ framework.
 
 """
 
-from django.core.wsgi import get_wsgi_application
-from dj_static import Cling, MediaCling
 import os
+
+from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "underquoted.settings")
 
@@ -24,4 +24,4 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "underquoted.settings")
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 
-application = Cling(MediaCling(get_wsgi_application()))
+application = get_wsgi_application()

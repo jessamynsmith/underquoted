@@ -1,4 +1,4 @@
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 
 
@@ -16,7 +16,8 @@ class Author(models.Model):
 
 
 class Quotation(models.Model):
-    author = models.ForeignKey(Author, related_name='underquoted')
+    author = models.ForeignKey(Author, related_name='underquoted',
+                               on_delete=models.CASCADE)
     text = models.CharField(max_length=500, unique=True)
 
     class Meta:

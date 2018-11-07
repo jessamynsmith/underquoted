@@ -14,7 +14,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'oe3-zo6yeb34h*ktvana^ejbb(^du)
 # Use env setting if available, otherwise make debug false
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', '0')))
 
-SSLIFY_DISABLE = not bool(int(os.environ.get('DJANGO_ENABLE_SSL', '0')))
 ALLOWED_HOSTS = ['underquoted.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Parse database configuration from $DATABASE_URL
@@ -71,21 +70,22 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
 
-MIDDLEWARE_CLASSES = (
-    'sslify.middleware.SSLifyMiddleware',
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 ROOT_URLCONF = 'underquoted.urls'
 
 CORS_ORIGIN_ALLOW_ALL = True
+SECURE_SSL_REDIRECT = bool(int(os.environ.get('DJANGO_ENABLE_SSL', '1')))
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Python dotted path to the WSGI application used by Django's runserver.
