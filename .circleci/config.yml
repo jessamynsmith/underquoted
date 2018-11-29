@@ -17,7 +17,7 @@ jobs:
       - image: circleci/python:3.6.5-jessie-node
         environment:
           DATABASE_URL: postgresql://root@localhost/circle_test?sslmode=disable
-          DJANGO_SETTINGS_MODULE: eggtimer.settings
+          DJANGO_SETTINGS_MODULE: underquoted.settings
           DJANGO_DEBUG: 0
           DJANGO_ENABLE_SSL: 0
       - image: circleci/postgres:9.6.5-alpine-ram
@@ -35,7 +35,7 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements/development.txt
+            pip install -r requirements.txt
       - save_cache:
           key: deps-py-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
