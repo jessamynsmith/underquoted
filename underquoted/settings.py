@@ -9,7 +9,8 @@ HOME_DIR = os.path.expanduser("~")
 BASE_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY',
+                            'oe3-zo6yeb34h*ktvana^ejbb(^du)613z+tl8@)psqkr+k7sd')
 
 # Use env setting if available, otherwise make debug false
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG', '0')))
