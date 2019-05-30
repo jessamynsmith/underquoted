@@ -45,6 +45,11 @@ class AuthorSummaryViewSet(viewsets.ModelViewSet):
         return queryset
 
 
+class QuotationsByAuthorViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.AuthorQuotationsSerializer
+    queryset = quotation_models.Author.objects.all()
+
+
 def redirect_to_random(request):
     quotations = query_set.get_random(quotation_models.Quotation.objects.all())
     return redirect(quotations[0])
