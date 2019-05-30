@@ -45,7 +45,7 @@ class AuthorSummaryViewSet(viewsets.ModelViewSet):
         return queryset
 
 
-class QuotationsByAuthorViewSet(viewsets.ModelViewSet):
+class QuotationsByAuthorViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.AuthorQuotationsSerializer
     queryset = quotation_models.Author.objects.all()
 

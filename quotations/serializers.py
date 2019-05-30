@@ -3,6 +3,14 @@ from rest_framework import serializers
 from quotations import models as quotation_models
 
 
+class KeyedListSerializerSerializer(serializers.ModelSerializer):
+
+    def to_representation(self, data):
+        response = super().to_representation(data)
+        key = response.pop('id')
+        return {key: response}
+
+
 class QuotationSerializer(serializers.ModelSerializer):
     author = serializers.StringRelatedField()
 
@@ -11,11 +19,11 @@ class QuotationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class QuotationOnlySerializer(serializers.ModelSerializer):
+class QuotationOnlySerializer(KeyedListSerializerSerializer):
 
     class Meta:
         model = quotation_models.Quotation
-        fields = ('text',)
+        fields = ('id', 'text',)
 
 
 class AuthorSummarySerializer(serializers.ModelSerializer):
@@ -26,9 +34,9 @@ class AuthorSummarySerializer(serializers.ModelSerializer):
         fields = ('name', 'total_quotations',)
 
 
-class AuthorQuotationsSerializer(serializers.ModelSerializer):
+class AuthorQuotationsSerializer(KeyedListSerializerSerializer):
     underquoted = QuotationOnlySerializer(many=True, read_only=True)
 
     class Meta:
         model = quotation_models.Author
-        fields = ('name', 'underquoted',)
+        fields = ('id', 'name', 'underquoted',)
