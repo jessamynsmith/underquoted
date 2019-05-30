@@ -1,5 +1,5 @@
 [run]
-source = api, libs, quotations, underquoted
+source = libs, quotations, underquoted
 branch = 1
 omit = *tests*
     */migrations/*
