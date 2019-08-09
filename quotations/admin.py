@@ -13,3 +13,4 @@ class QuotationAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Author, AuthorAdmin)
 admin.site.register(models.Quotation, QuotationAdmin)
+admin.site.register(models.Tag)

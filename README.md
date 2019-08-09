@@ -27,6 +27,10 @@ to be the actual path to python3 on your system.
     mkvirtualenv underquoted --python=/path/to/python3
     pip install -r requirements.txt
     
+If psycopg2 complains about missing SSL on OSX:
+
+    LDFLAGS="-L/usr/local/opt/openssl/lib" pip install -r requirements.txt
+    
 Create database (you must have PostgreSQL installed):
 
     createdb underquoted
