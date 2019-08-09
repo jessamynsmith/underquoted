@@ -1,6 +1,7 @@
 from django.conf import settings
+from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.db.models import Count, Q
+from django.db.models import Count
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
 
@@ -20,9 +21,9 @@ def _search_terms(queryset, field, terms):
 def _search_quotations(search_terms):
     quotations = quotation_models.Quotation.objects.all()
     if search_terms:
-        quotation_ids = _search_terms(quotations, "text", search_terms).values_list('id', flat=True)
-        authors = _search_terms(quotation_models.Author.objects.all(), "name", search_terms)
-        quotations = quotations.filter(Q(id__in=quotation_ids) | Q(author__in=authors))
+        search_vector = SearchVector('text', 'author__name', 'author__tags__value')
+        quotations = quotations.annotate(search=search_vector)
+        quotations = quotations.filter(search=search_terms)
     return quotations
 
 
@@ -30,7 +31,8 @@ class QuotationViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.QuotationSerializer
 
     def get_queryset(self):
-        quotations = _search_quotations(self.request.GET.getlist('search', ''))
+        search_terms = ' '.join(self.request.GET.getlist('search', []))
+        quotations = _search_quotations(search_terms)
         if self.request.GET.get('random', False):
             quotations = query_set.get_random(quotations)
         return quotations
@@ -57,7 +59,7 @@ def redirect_to_random(request):
 
 def list_quotations(request):
     search_text = request.GET.get('search_text', '').strip()
-    quotations = _search_quotations(search_text.split())
+    quotations = _search_quotations(search_text)
 
     paginator = Paginator(quotations, settings.MAX_PER_PAGE)
 
