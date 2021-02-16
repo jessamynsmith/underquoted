@@ -14,6 +14,21 @@ https://underquoted.herokuapp.com/api/v1/quotations/schema/?format=json
 You can use curl to search quotes on the live server:
 
     curl -vk -X GET -H "Content-Type: application/json" "https://underquoted.herokuapp.com/api/v2/quotations/?search=busy"
+    
+    # TODO add auth
+    curl -vk -X POST --data '{"text": "Insightful quote.", "name": "Thoughtful Person", "date_of_birth": "1900-01-01", "tag_values": ["sparkle", "glitter"]}' -H "Content-Type: application/json" "http://127.0.0.1:8000/api/v2/quotations/"
+    
+JSON data for browsable API create:
+
+    {
+        "text": "Insightful quote.",
+        "author": {
+            "name": "Thoughtful Person",
+            "date_of_birth": "1900-01-01",
+            "tag_values": ["sparkle", "glitter"]
+        }
+    }
+    
 
 ## Development
 

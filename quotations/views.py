@@ -3,7 +3,7 @@ from django.contrib.postgres.search import SearchVector
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import Count
 from django.shortcuts import render, redirect
-from rest_framework import viewsets
+from rest_framework import permissions, viewsets
 
 from quotations import models as quotation_models, serializers
 from libs import query_set
@@ -27,7 +27,21 @@ def _search_quotations(search_terms):
     return quotations
 
 
-class QuotationViewSet(viewsets.ModelViewSet):
+class QuotationAuthorCreateViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.QuotationAuthorCreateSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = quotation_models.Quotation.objects.all()
+    http_method_names = ['post']
+
+
+class QuotationCreateViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.QuotationCreateSerializer
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = quotation_models.Quotation.objects.all()
+    http_method_names = ['post']
+
+
+class QuotationViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.QuotationSerializer
 
     def get_queryset(self):
@@ -38,7 +52,7 @@ class QuotationViewSet(viewsets.ModelViewSet):
         return quotations
 
 
-class AuthorSummaryViewSet(viewsets.ModelViewSet):
+class AuthorSummaryViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = serializers.AuthorSummarySerializer
 
     def get_queryset(self):

@@ -6,6 +6,10 @@ from quotations import views as quotation_views
 
 
 router = routers.DefaultRouter()
+router.register(r'quotation_create', quotation_views.QuotationCreateViewSet,
+                base_name='quotation_create')
+router.register(r'quotation_author_create', quotation_views.QuotationAuthorCreateViewSet,
+                base_name='quotation_author_create')
 router.register(r'quotations', quotation_views.QuotationViewSet, base_name='quotations')
 router.register(r'author_summary', quotation_views.AuthorSummaryViewSet, base_name='author_summary')
 router.register(r'authors', quotation_views.QuotationsByAuthorViewSet, base_name='authors')
