@@ -7,7 +7,7 @@ Django==2.2.8
 django-cors-headers==3.0.2
 django-coverage-plugin==1.6.0
 django-settings-context-processor==0.2
-djangorestframework==3.9.4
+djangorestframework==3.11.2
 docopt==0.6.2
 entrypoints==0.3
 flake8==3.7.7
