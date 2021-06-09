@@ -3,7 +3,7 @@ chardet==3.0.4
 coverage==4.5.3
 coveralls==1.7.0
 dj-database-url==0.5.0
-Django==2.2.8
+Django==2.2.22
 django-cors-headers==3.0.2
 django-coverage-plugin==1.6.0
 django-settings-context-processor==0.2
