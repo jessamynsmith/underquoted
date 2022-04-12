@@ -57,6 +57,9 @@ class AuthorSummaryViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         queryset = quotation_models.Author.objects.all()
+        name = self.request.query_params.get('name')
+        if name is not None:
+            queryset = queryset.filter(name__icontains=name)
         queryset = queryset.values('name').annotate(total_quotations=Count('underquoted'))
         return queryset
 
