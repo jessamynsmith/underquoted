@@ -75,6 +75,17 @@ class QuotationsByAuthorViewSet(viewsets.ReadOnlyModelViewSet):
         return queryset
 
 
+class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
+    serializer_class = serializers.AuthorDetailSerializer
+
+    def get_queryset(self):
+        queryset = quotation_models.Author.objects.all()
+        name = self.request.query_params.get('name')
+        if name is not None:
+            queryset = queryset.filter(name__icontains=name)
+        return queryset
+
+
 def redirect_to_random(request):
     quotations = query_set.get_random(quotation_models.Quotation.objects.all())
     return redirect(quotations[0])

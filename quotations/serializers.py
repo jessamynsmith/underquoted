@@ -78,6 +78,14 @@ class AuthorSummarySerializer(serializers.ModelSerializer):
         fields = ('name', 'total_quotations',)
 
 
+class AuthorDetailSerializer(serializers.ModelSerializer):
+    underquoted = QuotationOnlySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = quotation_models.Author
+        fields = ('id', 'name', 'underquoted',)
+
+
 class AuthorQuotationsSerializer(KeyedListSerializerSerializer):
     underquoted = QuotationOnlySerializer(many=True, read_only=True)
 
