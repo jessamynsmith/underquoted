@@ -12,7 +12,7 @@ router.register(r'quotation_author_create', quotation_views.QuotationAuthorCreat
                 base_name='quotation_author_create')
 router.register(r'quotations', quotation_views.QuotationViewSet, base_name='quotations')
 router.register(r'author_summary', quotation_views.AuthorSummaryViewSet, base_name='author_summary')
-router.register(r'author_details', quotation_views.AuthorViewSet, base_name='authors')
+router.register(r'author_details', quotation_views.AuthorViewSet, base_name='author_details')
 router.register(r'authors', quotation_views.QuotationsByAuthorViewSet, base_name='authors')
 
 urlpatterns = [
